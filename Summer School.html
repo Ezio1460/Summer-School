@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Summer Academy Punjab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#f5f7ff;
+    --primary:#4f46e5;
+    --secondary:#06b6d4;
+    --accent:#f59e0b;
+    --pink:#ec4899;
+    --green:#10b981;
+    --text:#111827;
+    --muted:#6b7280;
+    --white:#ffffff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+section{
+    padding:100px 0;
+}
+
+.section-tag{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:100px;
+    background:rgba(79,70,229,0.1);
+    color:var(--primary);
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-size:clamp(2.2rem,5vw,4rem);
+    line-height:1.1;
+    font-weight:800;
+    margin-bottom:20px;
+}
+
+.section-text{
+    color:var(--muted);
+    line-height:1.9;
+    font-size:1.05rem;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(18px);
+    background:rgba(255,255,255,0.7);
+    border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.navbar{
+    height:82px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    text-decoration:none;
+    font-size:1.5rem;
+    font-weight:800;
+    color:var(--text);
+}
+
+.logo span{
+    color:var(--primary);
+}
+
+.nav-links{
+    display:flex;
+    gap:35px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#374151;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:var(--primary);
+}
+
+.menu-btn{
+    display:none;
+    font-size:2rem;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at top left, rgba(79,70,229,0.2), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(236,72,153,0.18), transparent 35%),
+    linear-gradient(135deg,#eef2ff,#fdf4ff);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:550px;
+    height:550px;
+    background:var(--secondary);
+    opacity:0.15;
+    border-radius:50%;
+    top:-200px;
+    right:-100px;
+    filter:blur(100px);
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.hero-text h1{
+    font-size:clamp(3rem,7vw,5.7rem);
+    line-height:0.95;
+    margin-bottom:25px;
+    font-weight:800;
+    letter-spacing:-3px;
+}
+
+.hero-text h1 span{
+    background:linear-gradient(135deg,var(--primary),var(--pink));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+    font-size:1.1rem;
+    color:var(--muted);
+    line-height:1.9;
+    margin-bottom:35px;
+    max-width:560px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 28px;
+    border-radius:16px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.35s;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,var(--primary),#7c3aed);
+    color:white;
+    box-shadow:0 12px 30px rgba(79,70,229,0.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-5px);
+}
+
+.btn-secondary{
+    background:white;
+    color:var(--text);
+    border:1px solid rgba(0,0,0,0.08);
+}
+
+.btn-secondary:hover{
+    transform:translateY(-5px);
+}
+
+/* HERO CARDS */
+
+.hero-right{
+    position:relative;
+}
+
+.main-card{
+    background:white;
+    padding:35px;
+    border-radius:35px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.08);
+    position:relative;
+    z-index:2;
+}
+
+.main-card img{
+    width:100%;
+    border-radius:25px;
+    margin-bottom:25px;
+}
+
+.main-card h3{
+    font-size:1.8rem;
+    margin-bottom:12px;
+}
+
+.main-card p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.floating-card{
+    position:absolute;
+    background:white;
+    padding:18px 22px;
+    border-radius:22px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+    font-weight:600;
+    z-index:3;
+}
+
+.card1{
+    top:-20px;
+    left:-30px;
+    color:var(--green);
+}
+
+.card2{
+    bottom:-20px;
+    right:-20px;
+    color:var(--pink);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    background:white;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.about-image{
+    position:relative;
+}
+
+.about-image img{
+    width:100%;
+    border-radius:35px;
+    box-shadow:0 25px 60px rgba(0,0,0,0.08);
+}
+
+.experience-box{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    background:linear-gradient(135deg,var(--primary),#7c3aed);
+    color:white;
+    padding:25px;
+    border-radius:24px;
+}
+
+.experience-box h2{
+    font-size:2.5rem;
+}
+
+/* =========================
+   COURSES
+========================= */
+
+.course-section{
+    background:linear-gradient(135deg,#eef2ff,#f0fdfa);
+}
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+    margin-top:60px;
+}
+
+.course-card{
+    background:white;
+    padding:35px;
+    border-radius:30px;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,0.05);
+}
+
+.course-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,rgba(79,70,229,0.05),rgba(236,72,153,0.05));
+    opacity:0;
+    transition:0.4s;
+}
+
+.course-card:hover::before{
+    opacity:1;
+}
+
+.course-card:hover{
+    transform:translateY(-12px);
+}
+
+.icon{
+    width:80px;
+    height:80px;
+    border-radius:24px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2rem;
+    margin-bottom:25px;
+}
+
+.blue{background:#e0e7ff;}
+.pink{background:#fce7f3;}
+.orange{background:#fef3c7;}
+.green{background:#d1fae5;}
+
+.course-card h3{
+    font-size:1.5rem;
+    margin-bottom:15px;
+}
+
+.course-card p{
+    color:var(--muted);
+    line-height:1.8;
+    margin-bottom:20px;
+}
+
+.course-card a{
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:700;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    background:white;
+}
+
+.contact-box{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    border-radius:40px;
+    padding:70px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.contact-box::before{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:rgba(255,255,255,0.08);
+    border-radius:50%;
+    top:-150px;
+    right:-100px;
+}
+
+form{
+    margin-top:40px;
+    display:grid;
+    gap:22px;
+    position:relative;
+    z-index:2;
+}
+
+input,
+textarea{
+    width:100%;
+    border:none;
+    padding:18px;
+    border-radius:18px;
+    font-size:1rem;
+    font-family:'Poppins',sans-serif;
+}
+
+textarea{
+    min-height:160px;
+    resize:none;
+}
+
+.submit-btn{
+    background:white;
+    color:var(--primary);
+    border:none;
+    padding:16px;
+    border-radius:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.submit-btn:hover{
+    transform:translateY(-4px);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#111827;
+    color:#cbd5e1;
+    padding:35px 0;
+    text-align:center;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:950px){
+
+    .hero-grid,
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:130px;
+    }
+}
+
+@media(max-width:768px){
+
+    .nav-links{
+        position:absolute;
+        top:82px;
+        left:0;
+        width:100%;
+        background:white;
+        flex-direction:column;
+        padding:25px;
+        display:none;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .contact-box{
+        padding:40px 25px;
+    }
+
+    .floating-card{
+        display:none;
+    }
+
+    .hero-text h1{
+        font-size:3.5rem;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+    <div class="container navbar">
+
+        <a href="#" class="logo">
+            🎓 Summer <span>Academy</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="menu-btn" id="menuBtn">☰</div>
+
+    </div>
+</header>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-grid">
+
+        <div class="hero-text fade-up">
+
+            <div class="section-tag">
+                Future Ready Education
+            </div>
+
+            <h1>
+                Learn.
+                Grow.
+                <span>Shine.</span>
+            </h1>
+
+            <p>
+                Summer Academy Punjab creates a vibrant and inspiring learning
+                environment where students explore creativity, technology,
+                leadership, and academic excellence.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#courses" class="btn btn-primary">
+                    Explore Courses
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-right fade-up">
+
+            <div class="floating-card card1">
+                ⭐ 5000+ Happy Students
+            </div>
+
+            <div class="main-card">
+
+                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop" alt="school">
+
+                <h3>
+                    Inspiring Young Minds
+                </h3>
+
+                <p>
+                    Building confidence, creativity, and leadership through
+                    modern education and engaging learning experiences.
+                </p>
+
+            </div>
+
+            <div class="floating-card card2">
+                📚 Smart Classrooms
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about" id="about">
+
+    <div class="container about-grid">
+
+        <div class="about-image fade-up">
+
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="students">
+
+            <div class="experience-box">
+                <h2>15+</h2>
+                <p>Years of Excellence</p>
+            </div>
+
+        </div>
+
+        <div class="fade-up">
+
+            <div class="section-tag">
+                About Us
+            </div>
+
+            <h2 class="section-title">
+                Creating Bright Futures Through Education
+            </h2>
+
+            <p class="section-text">
+                Summer Academy Punjab is dedicated to providing students with
+                world-class education in a vibrant and supportive environment.
+                Our mission is to nurture creativity, confidence, innovation,
+                and academic excellence.
+            </p>
+
+            <br>
+
+            <p class="section-text">
+                With experienced teachers, modern classrooms, practical learning,
+                and extracurricular activities, we prepare students to become
+                future leaders and achievers.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     COURSES
+========================= -->
+
+<section class="course-section" id="courses">
+
+    <div class="container">
+
+        <div class="section-tag fade-up">
+            Our Programs
+        </div>
+
+        <h2 class="section-title fade-up">
+            Explore Our Courses
+        </h2>
+
+        <p class="section-text fade-up">
+            Discover engaging subjects designed to help students learn,
+            innovate, and grow confidently.
+        </p>
+
+        <div class="course-grid">
+
+            <div class="course-card fade-up">
+
+                <div class="icon blue">💻</div>
+
+                <h3>Computer Science</h3>
+
+                <p>
+                    Learn coding, robotics, web development, and modern technology.
+                </p>
+
+                <a href="#">Learn More →</a>
+
+            </div>
+
+            <div class="course-card fade-up">
+
+                <div class="icon pink">🎨</div>
+
+                <h3>Creative Arts</h3>
+
+                <p>
+                    Enhance imagination through painting, music, and visual arts.
+                </p>
+
+                <a href="#">Learn More →</a>
+
+            </div>
+
+            <div class="course-card fade-up">
+
+                <div class="icon orange">📐</div>
+
+                <h3>Mathematics</h3>
+
+                <p>
+                    Develop analytical thinking and strong problem-solving skills.
+                </p>
+
+                <a href="#">Learn More →</a>
+
+            </div>
+
+            <div class="course-card fade-up">
+
+                <div class="icon green">🧪</div>
+
+                <h3>Science Labs</h3>
+
+                <p>
+                    Practical experiments and advanced learning in modern labs.
+                </p>
+
+                <a href="#">Learn More →</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <div class="contact-box fade-up">
+
+            <div class="section-tag" style="background:rgba(255,255,255,0.12);color:white;">
+                Contact Us
+            </div>
+
+            <h2 class="section-title">
+                Join Summer Academy Today
+            </h2>
+
+            <p style="line-height:1.9;max-width:700px;">
+                Have questions or want admission details?
+                Send us a message and our team will contact you soon.
+            </p>
+
+            <form id="contactForm">
+
+                <input type="text" placeholder="Full Name" required>
+
+                <input type="email" placeholder="Email Address" required>
+
+                <textarea placeholder="Your Message"></textarea>
+
+                <button class="submit-btn">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+    <div class="container">
+        © 2026 Summer Academy Punjab • Modern Vibrant School Website
+    </div>
+</footer>
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",()=>{
+    navLinks.classList.toggle("active");
+});
+
+/* SCROLL ANIMATION */
+
+const fadeElements = document.querySelectorAll(".fade-up");
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{
+    threshold:0.2
+});
+
+fadeElements.forEach(el=>{
+    observer.observe(el);
+});
+
+/* FORM */
+
+const form = document.getElementById("contactForm");
+
+form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+
+    alert("Message Sent Successfully!");
+
+    form.reset();
+});
+
+</script>
+
+</body>
+</html>
